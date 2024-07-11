@@ -7,3 +7,9 @@
 **/.settings
 **/.classpath
 **/.project
+
+## npm
+**/node_modules
+
+## mac
+**/.DS_Store
