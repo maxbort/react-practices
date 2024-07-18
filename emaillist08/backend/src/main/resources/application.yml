@@ -1,7 +1,7 @@
 # spring configuration
 spring:
    application:
-      name: emaillist08
+      name: emaillist
    profiles:
       active: development
 
@@ -54,7 +54,7 @@ spring:
          enabled: true
 
    thymeleaf:
-      cache: true
+      cache: false     
  
 server:
    port: 8080
@@ -95,5 +95,5 @@ logging:
       root: WARN
       com:
          poscodx:
-            tabbox:
+            emaillist:
                exception: ERROR

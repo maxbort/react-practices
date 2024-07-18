@@ -19,13 +19,14 @@ public class WhitelabelErrorController implements ErrorController {
 	public String _404() {
 		return "index";
 	}
-
+	
 	@ResponseBody
 	@RequestMapping("/500")
 	public JsonResult _500() {
 		return JsonResult.fail("500 INTERNAL_SERVER_ERROR");
 	}
 
+	@ResponseBody
 	@RequestMapping("")
 	public Object handleError(HttpServletRequest request) {
 	    Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
@@ -34,13 +35,13 @@ public class WhitelabelErrorController implements ErrorController {
 	        Integer statusCode = Integer.valueOf(status.toString());
 	    
 	        if(statusCode == HttpStatus.NOT_FOUND.value()) {
-	            return "errors/404";
+	            return "Not Found";
 	        } else if(statusCode == HttpStatus.BAD_REQUEST.value()) {
-	            return "errors/400";
+	            return JsonResult.fail("400 BAD_REQUEST");
 	        } else if(statusCode == HttpStatus.FORBIDDEN.value()) {
 	            return JsonResult.fail("403 FORBIDDEN");
 	        } else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-	            return "errors/500";
+	            return JsonResult.fail("500 INTERNAL_SERVER_ERROR");
 	        } 
 	    }
 	    
